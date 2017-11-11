@@ -1,0 +1,25 @@
+version: '2.0'
+services:
+  app:
+    build: app
+    command: ./manage.py runserver 0:8080
+    depends_on:
+      - db
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/usr/src/app
+      - ./js-compiler/example.html:/usr/src/app/PROJECT_NAME/APP_NAME/static/example.html
+      - ./js-compiler/dist:/usr/src/app/PROJECT_NAME/APP_NAME/static/dist
+
+  db:
+    image: postgres:10
+    environment:
+      - POSTGRES_USER=testdb
+      - POSTGRES_PASSWORD=testdb
+
+  client_compiler:
+    build: js-compiler
+    volumes:
+      - ./js-compiler:/usr/src/app
+      - /usr/src/app/node_modules
