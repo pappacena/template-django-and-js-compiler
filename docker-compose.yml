@@ -9,8 +9,8 @@ services:
       - 8080:8080
     volumes:
       - .:/usr/src/app
-      - ./js-compiler/example.html:/usr/src/app/PROJECT_NAME/APP_NAME/static/example.html
-      - ./js-compiler/dist:/usr/src/app/PROJECT_NAME/APP_NAME/static/dist
+      - ./js-compiler/index.html:/usr/src/app/PROJECT_NAME/APP_NAME/templates/APP_NAME/index.html
+      - ./js-compiler/dev-dist:/usr/src/app/PROJECT_NAME/APP_NAME//static/
 
   db:
     image: postgres:10
